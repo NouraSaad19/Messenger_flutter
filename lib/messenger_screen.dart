@@ -59,63 +59,66 @@ class MeessengerScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 0,
-                  ),
-                  //search
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Color.fromARGB(155, 111, 109, 109)),
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Color.fromARGB(109, 255, 255, 255),
-                        ),
-                        Text(
-                          "Search",
-                          style: TextStyle(
-                              color: Color.fromARGB(109, 255, 255, 255)),
-                        ),
-                      ],
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 0,
                     ),
-                  ),
-
-                  //story
-                  Container(
-                    height: 110,
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return buildStory();
-                      },
-                      separatorBuilder: (context, index) => SizedBox(
-                        //يعطيني مساحه بين الايتمز
-                        width: 10,
+                    //search
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Color.fromARGB(155, 111, 109, 109)),
+                      padding: EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Color.fromARGB(109, 255, 255, 255),
+                          ),
+                          Text(
+                            "Search",
+                            style: TextStyle(
+                                color: Color.fromARGB(109, 255, 255, 255)),
+                          ),
+                        ],
                       ),
-                      itemCount: 10,
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  //chats
-                  Expanded(
-                    child: ListView.separated(
+
+                    //story
+                    Container(
+                      height: 110,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return buildChat();
+                          return buildStory();
                         },
-                        separatorBuilder: ((context, index) => SizedBox(
-                              height: 10,
-                            )),
-                        itemCount: 5),
-                  ),
-                ],
+                        separatorBuilder: (context, index) => SizedBox(
+                          //يعطيني مساحه بين الايتمز
+                          width: 10,
+                        ),
+                        itemCount: 10,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    //chats
+                    Expanded(
+                      child: ListView.separated(
+                          itemBuilder: (context, index) {
+                            return buildChat();
+                          },
+                          separatorBuilder: ((context, index) => SizedBox(
+                                height: 10,
+                              )),
+                          itemCount: 50),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
