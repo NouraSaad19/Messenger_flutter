@@ -92,6 +92,7 @@ class MeessengerScreen extends StatelessWidget {
                     Container(
                       height: 110,
                       child: ListView.separated(
+                        shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return buildStory();
@@ -109,6 +110,8 @@ class MeessengerScreen extends StatelessWidget {
                     //chats
                     Expanded(
                       child: ListView.separated(
+                          shrinkWrap: true,
+                          //physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             return buildChat();
                           },
